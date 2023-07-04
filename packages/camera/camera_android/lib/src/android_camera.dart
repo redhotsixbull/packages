@@ -96,6 +96,7 @@ class AndroidCamera extends CameraPlatform {
     CameraDescription cameraDescription,
     ResolutionPreset? resolutionPreset, {
     bool enableAudio = false,
+    String cameraOrientation = 'portrait',
   }) async {
     try {
       final Map<String, dynamic>? reply = await _channel
