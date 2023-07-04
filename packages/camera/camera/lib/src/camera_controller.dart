@@ -310,10 +310,8 @@ class CameraController extends ValueNotifier<CameraValue> {
       });
 
       _cameraId = await CameraPlatform.instance.createCamera(
-        description,
-        resolutionPreset,
-        enableAudio: enableAudio,
-      );
+          description, resolutionPreset,
+          enableAudio: enableAudio, cameraOrientation: cameraOrientation);
 
       _unawaited(CameraPlatform.instance
           .onCameraInitialized(_cameraId)

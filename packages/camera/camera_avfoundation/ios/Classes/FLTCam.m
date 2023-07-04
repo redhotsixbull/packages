@@ -303,7 +303,7 @@ NSString *const errorMethod = @"error";
     if([@"portrait" isEqualToString:_cameraOrientation ]) {
       return AVCaptureVideoOrientationPortrait;
     } else {
-      return AVCaptureVideoOrientationLandscapeLeft;
+      return AVCaptureVideoOrientationLandscapeRight;
     }
     
   if (deviceOrientation == UIDeviceOrientationPortrait) {
