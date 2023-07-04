@@ -276,6 +276,7 @@
       // `prepareForVideoRecording` call. This is because `prepareForVideoRecording` call is
       // optional, and used as a workaround to fix a missing frame issue on iOS.
       BOOL audioEnabled = [call.arguments[@"enableAudio"] boolValue];
+
       if (audioEnabled) {
         // Setup audio capture session only if granted audio access.
         FLTRequestAudioPermissionWithCompletionHandler(^(FlutterError *error) {
@@ -303,11 +304,13 @@
     if (!strongSelf) return;
 
     NSString *cameraName = createMethodCall.arguments[@"cameraName"];
+    NSString *cameraOrientation = createMethodCall.arguments[@"cameraOrientation"];
     NSString *resolutionPreset = createMethodCall.arguments[@"resolutionPreset"];
     NSNumber *enableAudio = createMethodCall.arguments[@"enableAudio"];
     NSError *error;
     FLTCam *cam = [[FLTCam alloc] initWithCameraName:cameraName
                                     resolutionPreset:resolutionPreset
+                                   cameraOrientation:cameraOrientation
                                          enableAudio:[enableAudio boolValue]
                                          orientation:[[UIDevice currentDevice] orientation]
                                  captureSessionQueue:strongSelf.captureSessionQueue

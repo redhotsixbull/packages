@@ -42,6 +42,7 @@
 
 @property(readonly, nonatomic) int64_t textureId;
 @property BOOL enableAudio;
+@property(strong, nonatomic) NSString *cameraOrientation;
 @property(nonatomic) FLTImageStreamHandler *imageStreamHandler;
 @property(readonly, nonatomic) AVCaptureSession *videoCaptureSession;
 @property(readonly, nonatomic) AVCaptureSession *audioCaptureSession;
@@ -94,12 +95,14 @@ NSString *const errorMethod = @"error";
 
 - (instancetype)initWithCameraName:(NSString *)cameraName
                   resolutionPreset:(NSString *)resolutionPreset
+                  cameraOrientation:(NSString *)cameraOrientation
                        enableAudio:(BOOL)enableAudio
                        orientation:(UIDeviceOrientation)orientation
                captureSessionQueue:(dispatch_queue_t)captureSessionQueue
                              error:(NSError **)error {
   return [self initWithCameraName:cameraName
                  resolutionPreset:resolutionPreset
+                 cameraOrientation:cameraOrientation
                       enableAudio:enableAudio
                       orientation:orientation
               videoCaptureSession:[[AVCaptureSession alloc] init]
@@ -110,6 +113,7 @@ NSString *const errorMethod = @"error";
 
 - (instancetype)initWithCameraName:(NSString *)cameraName
                   resolutionPreset:(NSString *)resolutionPreset
+                  cameraOrientation:(NSString *)cameraOrientation
                        enableAudio:(BOOL)enableAudio
                        orientation:(UIDeviceOrientation)orientation
                videoCaptureSession:(AVCaptureSession *)videoCaptureSession
@@ -124,6 +128,7 @@ NSString *const errorMethod = @"error";
     *error = e;
   }
   _enableAudio = enableAudio;
+  _cameraOrientation = cameraOrientation;
   _captureSessionQueue = captureSessionQueue;
   _pixelBufferSynchronizationQueue =
       dispatch_queue_create("io.flutter.camera.pixelBufferSynchronizationQueue", NULL);
@@ -294,6 +299,13 @@ NSString *const errorMethod = @"error";
 
 - (AVCaptureVideoOrientation)getVideoOrientationForDeviceOrientation:
     (UIDeviceOrientation)deviceOrientation {
+    
+    if([@"portrait" isEqualToString:_cameraOrientation ]) {
+      return AVCaptureVideoOrientationPortrait;
+    } else {
+      return AVCaptureVideoOrientationLandscapeRight;
+    }
+    
   if (deviceOrientation == UIDeviceOrientationPortrait) {
     return AVCaptureVideoOrientationPortrait;
   } else if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {

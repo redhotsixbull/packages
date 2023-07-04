@@ -230,6 +230,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       description,
       resolutionPreset,
       enableAudio: enableAudio,
+      cameraOrientation: cameraOrientation,
     );
 
     unawaited(CameraPlatform.instance
