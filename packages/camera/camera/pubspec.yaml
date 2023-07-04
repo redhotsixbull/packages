@@ -25,14 +25,17 @@ dependencies:
     git:
       url: https://github.com/redhotsixbull/packages.git
       path: packages/camera/camera_android
+      ref: edit-camera
   camera_avfoundation:
     git:
       url: https://github.com/redhotsixbull/packages.git
       path: packages/camera/camera_avfoundation
+      ref: edit-camera
   camera_platform_interface:
     git:
       url: https://github.com/redhotsixbull/packages.git
       path: packages/camera/camera_platform_interface
+      ref: edit-camera
   flutter:
     sdk: flutter
   flutter_plugin_android_lifecycle: ^2.0.2
