@@ -174,9 +174,12 @@ class CameraController extends ValueNotifier<CameraValue> {
   CameraController(
     CameraDescription cameraDescription,
     this.resolutionPreset, {
+    this.cameraOrientation = 'portrait',
     this.enableAudio = true,
     this.imageFormatGroup,
   }) : super(CameraValue.uninitialized(cameraDescription));
+
+  final String cameraOrientation;
 
   /// The properties of the camera device controlled by this controller.
   CameraDescription get description => value.description;

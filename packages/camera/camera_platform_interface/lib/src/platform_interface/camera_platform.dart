@@ -51,6 +51,7 @@ abstract class CameraPlatform extends PlatformInterface {
     CameraDescription cameraDescription,
     ResolutionPreset? resolutionPreset, {
     bool enableAudio = false,
+    String cameraOrientation = 'portrait',
   }) {
     throw UnimplementedError('createCamera() is not implemented.');
   }

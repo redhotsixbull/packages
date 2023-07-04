@@ -122,6 +122,10 @@ class FakeController extends ValueNotifier<CameraValue>
 
   @override
   CameraDescription get description => value.description;
+
+  @override
+  // TODO: implement cameraOrientation
+  String get cameraOrientation => throw UnimplementedError();
 }
 
 void main() {

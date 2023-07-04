@@ -50,6 +50,7 @@ void _logError(String code, String? message) {
 class _CameraExampleHomeState extends State<CameraExampleHome>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   CameraController? controller;
+
   XFile? imageFile;
   XFile? videoFile;
   VideoPlayerController? videoController;
