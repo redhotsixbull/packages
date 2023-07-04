@@ -24,6 +24,7 @@ class CameraDescription {
     required this.name,
     required this.lensDirection,
     required this.sensorOrientation,
+    this.cameraViewOrientation = 'portrait',
   });
 
   /// The name of the camera device.
@@ -40,6 +41,10 @@ class CameraDescription {
   /// On Android, also defines the direction of rolling shutter readout, which
   /// is from top to bottom in the sensor's coordinate system.
   final int sensorOrientation;
+
+  /// the value of camera preview Orientation
+  /// default value is 'portrait'
+  final String cameraViewOrientation;
 
   @override
   bool operator ==(Object other) =>
